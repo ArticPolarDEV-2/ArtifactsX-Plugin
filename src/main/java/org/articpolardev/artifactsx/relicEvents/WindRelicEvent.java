@@ -23,15 +23,16 @@ public class WindRelicEvent implements Listener {
         ItemStack item = event.getItem();
 
         if (isWindRelic(item)) {
-            // Impedir que o item seja consumido
+            // Atrasar a substituição do item para evitar que ele seja consumido
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                 if (event.getHand() == EquipmentSlot.HAND) {
                     event.getPlayer().getInventory().setItemInMainHand(createWindRelic());
                 } else if (event.getHand() == EquipmentSlot.OFF_HAND) {
                     event.getPlayer().getInventory().setItemInOffHand(createWindRelic());
                 }
+                // Remover cooldown apenas após a substituição do item
                 event.getPlayer().setCooldown(item.getType(), 0); // Remover cooldown
-            }, 0L);
+            }, 2L); // Atraso de 2 ticks para evitar problemas com a remoção do item
         }
     }
 
