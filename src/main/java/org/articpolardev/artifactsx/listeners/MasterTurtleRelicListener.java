@@ -1,0 +1,40 @@
+package org.articpolardev.artifactsx.listeners;
+
+import org.articpolardev.artifactsx.handlers.NameFormat;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MasterTurtleRelicListener {
+    private static final NamespacedKey IDENTIFIER_KEY = new NamespacedKey("artifactsx", "relic_identifier");
+    private static final String tag = "masterturtle";
+
+    public static ItemStack createMasterTurtleRelic() {
+        ItemStack TurtleHelmet = new ItemStack(Material.TURTLE_HELMET);
+        ItemMeta meta = TurtleHelmet.getItemMeta();
+        if (meta != null) {
+            meta.getPersistentDataContainer().set(IDENTIFIER_KEY, PersistentDataType.STRING, tag);
+            meta.addEnchant(Enchantment.PROTECTION, 8, true);
+            meta.addEnchant(Enchantment.AQUA_AFFINITY, 10, true);
+            meta.setUnbreakable(true);
+            meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES);
+
+            // Descrição do Item
+            List<String> lore = new ArrayList<>();
+            lore.add("§7Indestrutível");
+            meta.setLore(lore);
+
+            String FName = NameFormat.RelicNameFormat("#66ff99", "Relíquia do MESTRE TARTARUGA");
+            meta.setDisplayName(FName);
+            TurtleHelmet.setItemMeta(meta);
+        }
+        return TurtleHelmet;
+    }
+}

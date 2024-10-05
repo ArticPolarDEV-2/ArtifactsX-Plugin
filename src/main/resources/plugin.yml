@@ -1,0 +1,20 @@
+name: ArtifactsX
+version: '1.0-SNAPSHOT'
+main: org.articpolardev.artifactsx.ArtifactsX
+api-version: '1.21'
+authors: [ ArticPolarDEV ]
+description: Add Artifact with Habilities and Enchants to Your Server!
+website: https://github.com/ArticPolarDEV
+commands:
+  addrelics:
+    description: Adiciona todas as relíquias ao Ender Chest do jogador.
+    usage: /addrelics
+  clearenderchest:
+    description: Limpa o Bau do FIM
+    usage: /clearenderchest <nome_do_jogador>
+  expurgtime:
+    description: "Mostra o tempo restante do Expurgo."
+    usage: "/expurgtime"
+  isexpurgday:
+      description: "Verifica se o Expurgo está ativo."
+      usage: "/isexpurgday"
